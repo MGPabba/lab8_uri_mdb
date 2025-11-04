@@ -13,6 +13,11 @@
 
 */
 
+var movie = ["How To Train Your Dragon", "50 First Dates", "The Lord of the Rings: The Fellowship of the Ring"];
+var poster = ["https://upload.wikimedia.org/wikipedia/en/9/99/How_to_Train_Your_Dragon_logo.png", "https://upload.wikimedia.org/wikipedia/en/9/9d/50FirstDates.jpg", "https://upload.wikimedia.org/wikipedia/en/f/fb/Lord_Rings_Fellowship_Ring.jpg"];
+var alt_text = ["How To Train Your Dragon Poster", "50 First Dates Poster", "The Lord of the Rings: The Fellowship of the Ring Poster"];
+var page = ["httyd.html", "50-first-dates.html", "lotr.html"];
+var my_rating = [5, 4, 3];
 
 /* TO DO:
 	
@@ -35,3 +40,23 @@
 	  - Set the movie rating element's text to display the generated stars. 
 
 */
+
+var cards = document.querySelectorAll("div.movie-card");
+var i = 0;
+while (i < 3) {
+	cards[i].querySelector("img.movie-image").src = poster[i];
+	cards[i].querySelector("img.movie-image").alt = alt_text[i];
+	cards[i].querySelector("a.movie-link").href = page[i];
+	cards[i].querySelector("a.movie-link").textContent = movie[i];
+	var stars = "";
+	for (var j = 0; j < 5; j++) {
+		if (j < my_rating[i]) {
+			stars += "★";
+		}
+		else {
+			stars += "☆";
+		}
+	}
+	cards[i].querySelector("div.rating").textContent = stars;
+	i++;
+}
